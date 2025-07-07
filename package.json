@@ -1,0 +1,19 @@
+{
+  "name": "shopify-changelog-scraper",
+  "version": "1.0.0",
+  "description": "A simple scraper that grabs recent changes from the Shopify developer change log and sends them as notifications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danstoakes/shopify-changelog-scraper.git"
+  },
+  "author": "Dan Stoakes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danstoakes/shopify-changelog-scraper/issues"
+  },
+  "homepage": "https://github.com/danstoakes/shopify-changelog-scraper#readme"
+}
