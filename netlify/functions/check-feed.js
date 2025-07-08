@@ -19,7 +19,7 @@ exports.handler = async () => {
 
     for (const item of newItems.reverse()) {
         await axios.post(process.env.SLACK_WEBHOOK_URL, {
-            text: `🆕 *${item.title}*\n${item.link}`
+            text: `${item.title}\n${item.link}`
         });
     }
 
