@@ -5,7 +5,7 @@ const axios = require('axios');
 
 require('dotenv').config();
 
-const SEEN_FILE = path.resolve(__dirname, '../../tracked-updates.json');
+const SEEN_FILE = path.join(process.cwd(), 'tracked-updates.json');
 
 exports.handler = async () => {
     const seen = JSON.parse(fs.readFileSync(SEEN_FILE, 'utf8'));
