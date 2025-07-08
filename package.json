@@ -2,10 +2,8 @@
   "name": "shopify-changelog-scraper",
   "version": "1.0.0",
   "description": "A simple scraper that grabs recent changes from the Shopify developer change log and sends them as notifications.",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "node netlify/functions/check-feed.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +18,8 @@
   "dependencies": {
     "axios": "^1.10.0",
     "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "dotenv": "^17.1.0"
   }
 }
