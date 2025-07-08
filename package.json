@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A simple scraper that grabs recent changes from the Shopify developer change log and sends them as notifications.",
   "scripts": {
-    "test": "node netlify/functions/check-feed.js"
+    "test": "node local-test.js"
   },
   "repository": {
     "type": "git",
