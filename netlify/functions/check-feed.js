@@ -8,6 +8,7 @@ require('dotenv').config();
 const SEEN_FILE = path.join(process.cwd(), 'tracked-updates.json');
 
 console.log('Looking for file at:', SEEN_FILE);
+console.log('Files in root:', fs.readdirSync(process.cwd()));
 
 exports.handler = async () => {
     const seen = JSON.parse(fs.readFileSync(SEEN_FILE, 'utf8'));
