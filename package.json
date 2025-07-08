@@ -19,6 +19,6 @@
   "homepage": "https://github.com/danstoakes/shopify-changelog-scraper#readme",
   "dependencies": {
     "axios": "^1.10.0",
-    "cheerio": "^1.1.0"
+    "rss-parser": "^3.13.0"
   }
 }
