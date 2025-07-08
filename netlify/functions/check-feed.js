@@ -5,7 +5,8 @@ require('dotenv').config();
 
 exports.handler = async () => {
     // Calculate date 24 hours ago
-    const cutoffDate = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    // const cutoffDate = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    const cutoffDate = new Date('Thu, 03 Jul 2025 15:20:00 +0000');
     const feedItems = await getFeed();
 
     // Filter items published within last 24 hours
