@@ -21,22 +21,6 @@ exports.handler = async () => {
         await axios.post(process.env.SLACK_WEBHOOK_URL, {
             text: `🆕 *${item.title}*\n${item.link}`
         });
-
-        await axios.post(process.env.DISCORD_WEBHOOK_URL, {
-            content: `🆕 ${item.title}\n${item.link}`
-        });
-
-        await axios.post(process.env.SENDGRID_API_URL, {
-            personalizations: [{ to: [{ email: process.env.SENDGRID_FROM_EMAIL }] }],
-            from: { email: process.env.SENDGRID_TO_EMAIL },
-            subject: `New Shopify Changelog: ${item.title}`,
-            content: [{ type: 'text/plain', value: `${item.link}` }]
-        }, {
-            headers: {
-                Authorization: `Bearer ${process.env.SENDGRID_API_KEY}`,
-                'Content-Type': 'application/json',
-            }
-        });
     }
 
     fs.writeFileSync(SEEN_FILE, JSON.stringify({ lastSeenPubDate: newItems[newItems.length - 1].pubDate }, null, 2));
