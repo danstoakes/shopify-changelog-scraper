@@ -1,23 +1,18 @@
-const fs = require('fs');
-const path = require('path');
 const { getFeed } = require('../../helpers/rss');
 const axios = require('axios');
 
 require('dotenv').config();
 
-const SEEN_FILE = path.join(process.cwd(), 'tracked-updates.json');
-
-console.log('Looking for file at:', SEEN_FILE);
-console.log('Files in root:', fs.readdirSync(process.cwd()));
-
 exports.handler = async () => {
-    const seen = JSON.parse(fs.readFileSync(SEEN_FILE, 'utf8'));
+    // Calculate date 24 hours ago
+    const cutoffDate = new Date(Date.now() - 24 * 60 * 60 * 1000);
     const feedItems = await getFeed();
 
-    const newItems = feedItems.filter(item => new Date(item.pubDate) > new Date(seen.lastSeenPubDate));
+    // Filter items published within last 24 hours
+    const newItems = feedItems.filter(item => new Date(item.pubDate) > cutoffDate);
 
     if (newItems.length === 0) {
-        return { statusCode: 200, body: 'No new items' };
+        return { statusCode: 200, body: 'No new items in the last 24 hours' };
     }
 
     for (const item of newItems.reverse()) {
@@ -25,8 +20,6 @@ exports.handler = async () => {
             text: `${item.title}\n${item.link}`
         });
     }
-
-    fs.writeFileSync(SEEN_FILE, JSON.stringify({ lastSeenPubDate: newItems[newItems.length - 1].pubDate }, null, 2));
 
     return {
         statusCode: 200,
