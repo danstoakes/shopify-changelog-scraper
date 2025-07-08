@@ -6,4 +6,3 @@
 
 [functions."check-feed"]
   included_files = ["tracked-updates.json"]
-  schedule = "0 14 * * *" # runs at 2pm UTC daily
