@@ -5,4 +5,4 @@
   node_bundler = "esbuild"
 
 [functions."check-feed"]
-  schedule = "0 14 * * *" # runs at 2pm UTC daily
+  schedule = "0 9 * * *" # runs at 9am UTC daily
