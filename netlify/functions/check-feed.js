@@ -7,6 +7,8 @@ require('dotenv').config();
 
 const SEEN_FILE = path.join(process.cwd(), 'tracked-updates.json');
 
+console.log('Looking for file at:', SEEN_FILE);
+
 exports.handler = async () => {
     const seen = JSON.parse(fs.readFileSync(SEEN_FILE, 'utf8'));
     const feedItems = await getFeed();
