@@ -1,0 +1,27 @@
+name: Auto Commit tracked-updates.json
+
+on:
+  push:
+    paths:
+      - 'tracked-updates.json'
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Git
+        run: |
+          git config user.name "Netlify Bot"
+          git config user.email "bot@netlify.app"
+
+      - name: Commit changes
+        run: |
+          git add tracked-updates.json
+          git commit -m "Update tracked-updates.json [bot] [skip ci]" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
